@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-key */
+import CountryCard from "@/components/countryCard";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,6 +23,8 @@ export type Country = {
   languages?: {
     [key: string]: string;
   }
+  borders?: string[];
+  cca3: string;
 }
 
 
@@ -34,28 +37,17 @@ export default async function Home() {
   const countries = await getCountries();
   console.log(countries)
 
-
   return (
-    <section className="container grid grid-cols-5 w-full gap-2 mt-16 rounded-xl">
+    <section className="container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
+    lg:grid-cols-4 xl:grid grid-cols-5 w-full gap-2 mt-16 rounded-xl">
       {countries.map((country) => (
-        <Link href={`/pais/${country.name.common}`}>
-        <article 
-          className="h-64 min=-w-full p-2 bg-white border-2 rounded-xl 
-           hover:border-indigo-200 transition-all hover:shadown-xl" 
-           key={country.name.common}
-           >
-          <div 
-          className="relative w-full h-40 p-2 overflow-hidden rounded-xl">
-            <Image 
-            src={country.flags.svg} 
-            alt="country.flags.alt" 
-            fill
-            className="object-cover"/>
-          </div>
-      <h1 className="font-bold text-xl text-center mt-1">
-        {country.translations.por.common}</h1>
-      </article>
-      </Link>
+      <CountryCard 
+      name={country.name.common} 
+      ptName={country.translations.por.common}
+      flag={country.flags.svg}
+      flagAlt={country.flags.alt} 
+      key={country.name.common}
+      />
       ))}
     </section>
   )
