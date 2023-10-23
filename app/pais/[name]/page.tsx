@@ -53,7 +53,7 @@ export default async function CountryPage({
       </h1>
       <Link className="flex items-center py-2" href="/">
         <Image
-          src="/arrow-back.svg"
+          src="/Seta.svg"
           alt="Ícone de seta de voltar"
           width={24}
           height={24}
