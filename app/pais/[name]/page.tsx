@@ -103,7 +103,7 @@ export default async function CountryPage({
           Países que fazem fronteira
         </h3>
         <div className="container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 
-    lg:grid-cols-4 xl:grid grid-cols-5 w-full gap-2 rounded-xl">
+    lg:grid-cols-4 xl:grid w-full gap-2 rounded-xl">
           {borderCountries?.map((border) => (
             <CountryCard key={border.name} {...border} />
           ))}
